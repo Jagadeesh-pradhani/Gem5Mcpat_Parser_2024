@@ -38,6 +38,11 @@ run
 python3 parser.py --config m5out/config.json --stats m5out/stats.txt --template templates/template_latest.xml
 ```
 
+### McPat
+```sh
+./mcpat -infile mcpat-in.xml
+```
+
 
 
 
