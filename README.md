@@ -30,7 +30,7 @@ This script converts Gem5 simulation statistics to McPAT compatible input files.
 ### Example
 
 ```sh
-python3 parser.py --config m5out/config.json --stats m5out/old.txt --template templates/template_latest.xml
+python3 parser.py --config m5out/config.json --stats m5out/stats.txt --template templates/template_latest.xml
 ```
 
 
