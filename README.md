@@ -1,6 +1,7 @@
 # Gem5Mcpat_Parser_2024
 Updated version of parser <br>
-This script converts Gem5 simulation statistics to McPAT compatible input files. It supports multiple cores as well as multiple private or one shared L2 cache.
+This script converts Gem5 simulation statistics to McPAT compatible input files. It supports multiple cores as well as multiple private or one shared L2 cache. <br>
+Tested with ruby memory only
 
 
 
