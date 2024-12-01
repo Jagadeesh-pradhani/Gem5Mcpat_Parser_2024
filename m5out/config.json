@@ -1108,7 +1108,7 @@
                         "name": "workload",
                         "path": "system.cpu00.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -1117,7 +1117,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -2136,7 +2136,7 @@
                         "name": "workload",
                         "path": "system.cpu01.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -2145,7 +2145,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -3164,7 +3164,7 @@
                         "name": "workload",
                         "path": "system.cpu02.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -3173,7 +3173,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -4192,7 +4192,7 @@
                         "name": "workload",
                         "path": "system.cpu03.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -4201,7 +4201,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -5220,7 +5220,7 @@
                         "name": "workload",
                         "path": "system.cpu04.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -5229,7 +5229,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -6248,7 +6248,7 @@
                         "name": "workload",
                         "path": "system.cpu05.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -6257,7 +6257,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -7276,7 +7276,7 @@
                         "name": "workload",
                         "path": "system.cpu06.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -7285,7 +7285,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -8304,7 +8304,7 @@
                         "name": "workload",
                         "path": "system.cpu07.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -8313,7 +8313,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -9332,7 +9332,7 @@
                         "name": "workload",
                         "path": "system.cpu08.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -9341,7 +9341,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -10360,7 +10360,7 @@
                         "name": "workload",
                         "path": "system.cpu09.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -10369,7 +10369,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -11388,7 +11388,7 @@
                         "name": "workload",
                         "path": "system.cpu10.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -11397,7 +11397,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -12416,7 +12416,7 @@
                         "name": "workload",
                         "path": "system.cpu11.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -12425,7 +12425,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -13444,7 +13444,7 @@
                         "name": "workload",
                         "path": "system.cpu12.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -13453,7 +13453,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -14472,7 +14472,7 @@
                         "name": "workload",
                         "path": "system.cpu13.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -14481,7 +14481,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -15500,7 +15500,7 @@
                         "name": "workload",
                         "path": "system.cpu14.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -15509,7 +15509,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -16528,7 +16528,7 @@
                         "name": "workload",
                         "path": "system.cpu15.workload",
                         "cmd": [
-                            "SPEC.Small/fft/fft"
+                            "SPEC.Small/mcf/mcf"
                         ],
                         "cwd": "/workspaces/Cache_simulation_gem5/gem5",
                         "drivers": [],
@@ -16537,7 +16537,7 @@
                         "errout": "cerr",
                         "euid": 100,
                         "eventq_index": 0,
-                        "executable": "SPEC.Small/fft/fft",
+                        "executable": "SPEC.Small/mcf/mcf",
                         "gid": 1000,
                         "input": "cin",
                         "kvmInSE": false,
@@ -21432,7 +21432,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
@@ -21714,7 +21714,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
@@ -21996,7 +21996,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
@@ -22278,7 +22278,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
@@ -22560,7 +22560,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
@@ -22842,7 +22842,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
@@ -23124,7 +23124,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
@@ -23406,7 +23406,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
@@ -23688,7 +23688,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
@@ -23970,7 +23970,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
@@ -24252,7 +24252,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
@@ -24534,7 +24534,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
@@ -24816,7 +24816,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
@@ -25098,7 +25098,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
@@ -25380,7 +25380,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
@@ -25662,7 +25662,7 @@
                 "clk_domain": "system.cpu_clk_domain",
                 "cluster_id": 0,
                 "downstream_destinations": [],
-                "enable_prefetch": true,
+                "enable_prefetch": false,
                 "eventq_index": 0,
                 "l1_request_latency": 2,
                 "l1_response_latency": 2,
