@@ -159,15 +159,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu0.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu0.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu0.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu0.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu0.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu0.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu0.rename.RenamedOperands * stats.system.cpu0.rename.int_rename_lookups / stats.system.cpu0.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu0.rename.renamedOperands * stats.system.cpu0.rename.intLookups / stats.system.cpu0.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu0.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu0.rename.RenamedOperands * stats.system.cpu0.rename.fp_rename_lookups / stats.system.cpu0.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu0.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu0.rename.renamedOperands * stats.system.cpu0.rename.fpLookups / stats.system.cpu0.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu0.intInstQueueReads" />
@@ -265,10 +265,10 @@
         <param name="buffer_sizes" value="4,4,4,4" />
 
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu0.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu0.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu0.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu0.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl0.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl0.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl0.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl0.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu0.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -279,7 +279,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu0.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu0.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu0.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -396,15 +396,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu1.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu1.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu1.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu1.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu1.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu1.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu1.rename.RenamedOperands * stats.system.cpu1.rename.int_rename_lookups / stats.system.cpu1.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu1.rename.renamedOperands * stats.system.cpu1.rename.intLookups / stats.system.cpu1.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu1.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu1.rename.RenamedOperands * stats.system.cpu1.rename.fp_rename_lookups / stats.system.cpu1.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu1.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu1.rename.renamedOperands * stats.system.cpu1.rename.fpLookups / stats.system.cpu1.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu1.intInstQueueReads" />
@@ -484,8 +484,8 @@
         <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu1.readReqs" />
-        <stat name="read_misses" value="stats.system.cpu1.icache.ReadReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl1.L1Icache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl1.L1Icache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu1.icache.replacements" />
       </component>
       <component id="system.core1.dtlb" name="dtlb">
@@ -500,10 +500,10 @@
         <param name="dcache_config" value="32768,64,2,1,1,2,64,0"/>
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu1.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu1.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu1.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu1.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl1.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl1.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl1.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl1.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu1.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -514,7 +514,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu1.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu1.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu1.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -630,15 +630,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu2.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu2.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu2.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu2.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu2.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu2.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu2.rename.RenamedOperands * stats.system.cpu2.rename.int_rename_lookups / stats.system.cpu2.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu2.rename.renamedOperands * stats.system.cpu2.rename.intLookups / stats.system.cpu2.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu2.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu2.rename.RenamedOperands * stats.system.cpu2.rename.fp_rename_lookups / stats.system.cpu2.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu2.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu2.rename.renamedOperands * stats.system.cpu2.rename.fpLookups / stats.system.cpu2.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu2.intInstQueueReads" />
@@ -718,8 +718,8 @@
         <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu2.readReqs" />
-        <stat name="read_misses" value="stats.system.cpu2.icache.ReadReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl2.L1Icache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl2.L1Icache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu2.icache.replacements" />
       </component>
       <component id="system.core2.dtlb" name="dtlb">
@@ -734,10 +734,10 @@
         <param name="dcache_config" value="32768,64,2,1,1,2,64,0"/>
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu2.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu2.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu2.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu2.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl2.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl2.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl2.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl2.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu2.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -748,7 +748,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu2.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu2.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu2.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -864,15 +864,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu3.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu3.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu3.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu3.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu3.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu3.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu3.rename.RenamedOperands * stats.system.cpu3.rename.int_rename_lookups / stats.system.cpu3.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu3.rename.renamedOperands * stats.system.cpu3.rename.intLookups / stats.system.cpu3.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu3.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu3.rename.RenamedOperands * stats.system.cpu3.rename.fp_rename_lookups / stats.system.cpu3.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu3.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu3.rename.renamedOperands * stats.system.cpu3.rename.fpLookups / stats.system.cpu3.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu3.intInstQueueReads" />
@@ -952,8 +952,8 @@
         <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu3.readReqs" />
-        <stat name="read_misses" value="stats.system.cpu3.icache.ReadReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl3.L1Icache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl3.L1Icache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu3.icache.replacements" />
       </component>
       <component id="system.core3.dtlb" name="dtlb">
@@ -968,10 +968,10 @@
         <param name="dcache_config" value="32768,64,2,1,1,2,64,0"/>
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu3.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu3.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu3.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu3.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl3.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl3.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl3.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl3.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu3.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -982,7 +982,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu3.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu3.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu3.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -1098,15 +1098,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu4.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu4.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu4.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu4.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu4.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu4.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu4.rename.RenamedOperands * stats.system.cpu4.rename.int_rename_lookups / stats.system.cpu4.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu4.rename.renamedOperands * stats.system.cpu4.rename.intLookups / stats.system.cpu4.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu4.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu4.rename.RenamedOperands * stats.system.cpu4.rename.fp_rename_lookups / stats.system.cpu4.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu4.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu4.rename.renamedOperands * stats.system.cpu4.rename.fpLookups / stats.system.cpu4.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu4.intInstQueueReads" />
@@ -1186,8 +1186,8 @@
         <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu4.readReqs" />
-        <stat name="read_misses" value="stats.system.cpu4.icache.ReadReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl4.L1Icache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl4.L1Icache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu4.icache.replacements" />
       </component>
       <component id="system.core4.dtlb" name="dtlb">
@@ -1202,10 +1202,10 @@
         <param name="dcache_config" value="32768,64,2,1,1,2,64,0"/>
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu4.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu4.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu4.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu4.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl4.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl4.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl4.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl4.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu4.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -1216,7 +1216,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu4.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu4.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu4.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -1332,15 +1332,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu5.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu5.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu5.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu5.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu5.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu5.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu5.rename.RenamedOperands * stats.system.cpu5.rename.int_rename_lookups / stats.system.cpu5.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu5.rename.renamedOperands * stats.system.cpu5.rename.intLookups / stats.system.cpu5.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu5.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu5.rename.RenamedOperands * stats.system.cpu5.rename.fp_rename_lookups / stats.system.cpu5.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu5.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu5.rename.renamedOperands * stats.system.cpu5.rename.fpLookups / stats.system.cpu5.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu5.intInstQueueReads" />
@@ -1420,8 +1420,8 @@
         <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu5.readReqs" />
-        <stat name="read_misses" value="stats.system.cpu5.icache.ReadReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl5.L1Icache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl5.L1Icache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu5.icache.replacements" />
       </component>
       <component id="system.core5.dtlb" name="dtlb">
@@ -1436,10 +1436,10 @@
         <param name="dcache_config" value="32768,64,2,1,1,2,64,0"/>
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu5.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu5.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu5.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu5.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl5.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl5.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl5.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl5.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu5.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -1450,7 +1450,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu5.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu5.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu5.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -1566,15 +1566,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu6.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu6.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu6.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu6.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu6.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu6.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu6.rename.RenamedOperands * stats.system.cpu6.rename.int_rename_lookups / stats.system.cpu6.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu6.rename.renamedOperands * stats.system.cpu6.rename.intLookups / stats.system.cpu6.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu6.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu6.rename.RenamedOperands * stats.system.cpu6.rename.fp_rename_lookups / stats.system.cpu6.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu6.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu6.rename.renamedOperands * stats.system.cpu6.rename.fpLookups / stats.system.cpu6.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu6.intInstQueueReads" />
@@ -1654,8 +1654,8 @@
         <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu6.readReqs" />
-        <stat name="read_misses" value="stats.system.cpu6.icache.ReadReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl6.L1Icache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl6.L1Icache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu6.icache.replacements" />
       </component>
       <component id="system.core6.dtlb" name="dtlb">
@@ -1670,10 +1670,10 @@
         <param name="dcache_config" value="32768,64,2,1,1,2,64,0"/>
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu6.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu6.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu6.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu6.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl6.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl6.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl6.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl6.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu6.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -1684,7 +1684,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu6.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu6.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu6.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -1800,15 +1800,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu7.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu7.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu7.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu7.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu7.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu7.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu7.rename.RenamedOperands * stats.system.cpu7.rename.int_rename_lookups / stats.system.cpu7.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu7.rename.renamedOperands * stats.system.cpu7.rename.intLookups / stats.system.cpu7.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu7.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu7.rename.RenamedOperands * stats.system.cpu7.rename.fp_rename_lookups / stats.system.cpu7.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu7.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu7.rename.renamedOperands * stats.system.cpu7.rename.fpLookups / stats.system.cpu7.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu7.intInstQueueReads" />
@@ -1888,8 +1888,8 @@
         <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu7.readReqs" />
-        <stat name="read_misses" value="stats.system.cpu7.icache.ReadReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl7.L1Icache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl7.L1Icache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu7.icache.replacements" />
       </component>
       <component id="system.core7.dtlb" name="dtlb">
@@ -1904,10 +1904,10 @@
         <param name="dcache_config" value="32768,64,2,1,1,2,64,0"/>
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu7.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu7.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu7.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu7.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl7.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl7.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl7.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl7.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu7.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -1918,7 +1918,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu7.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu7.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu7.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -2034,15 +2034,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu8.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu8.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu8.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu8.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu8.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu8.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu8.rename.RenamedOperands * stats.system.cpu8.rename.int_rename_lookups / stats.system.cpu8.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu8.rename.renamedOperands * stats.system.cpu8.rename.intLookups / stats.system.cpu8.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu8.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu8.rename.RenamedOperands * stats.system.cpu8.rename.fp_rename_lookups / stats.system.cpu8.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu8.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu8.rename.renamedOperands * stats.system.cpu8.rename.fpLookups / stats.system.cpu8.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu8.intInstQueueReads" />
@@ -2122,8 +2122,8 @@
         <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu8.readReqs" />
-        <stat name="read_misses" value="stats.system.cpu8.icache.ReadReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl8.L1Icache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl8.L1Icache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu8.icache.replacements" />
       </component>
       <component id="system.core8.dtlb" name="dtlb">
@@ -2138,10 +2138,10 @@
         <param name="dcache_config" value="32768,64,2,1,1,2,64,0"/>
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu8.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu8.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu8.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu8.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl8.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl8.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl8.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl8.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu8.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -2152,7 +2152,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu8.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu8.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu8.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -2268,15 +2268,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu9.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu9.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu9.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu9.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu9.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu9.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu9.rename.RenamedOperands * stats.system.cpu9.rename.int_rename_lookups / stats.system.cpu9.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu9.rename.renamedOperands * stats.system.cpu9.rename.intLookups / stats.system.cpu9.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu9.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu9.rename.RenamedOperands * stats.system.cpu9.rename.fp_rename_lookups / stats.system.cpu9.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu9.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu9.rename.renamedOperands * stats.system.cpu9.rename.fpLookups / stats.system.cpu9.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu9.intInstQueueReads" />
@@ -2356,8 +2356,8 @@
         <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu9.readReqs" />
-        <stat name="read_misses" value="stats.system.cpu9.icache.ReadReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl9.L1Icache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl9.L1Icache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu9.icache.replacements" />
       </component>
       <component id="system.core9.dtlb" name="dtlb">
@@ -2372,10 +2372,10 @@
         <param name="dcache_config" value="32768,64,2,1,1,2,64,0"/>
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu9.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu9.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu9.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu9.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl9.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl9.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl9.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl9.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu9.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -2386,7 +2386,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu9.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu9.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu9.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -2502,15 +2502,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu10.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu10.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu10.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu10.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu10.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu10.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu10.rename.RenamedOperands * stats.system.cpu10.rename.int_rename_lookups / stats.system.cpu10.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu10.rename.renamedOperands * stats.system.cpu10.rename.intLookups / stats.system.cpu10.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu10.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu10.rename.RenamedOperands * stats.system.cpu10.rename.fp_rename_lookups / stats.system.cpu10.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu10.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu10.rename.renamedOperands * stats.system.cpu10.rename.fpLookups / stats.system.cpu10.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu10.intInstQueueReads" />
@@ -2590,8 +2590,8 @@
         <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu10.readReqs" />
-        <stat name="read_misses" value="stats.system.cpu10.icache.ReadReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl10.L1Icache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl10.L1Icache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu10.icache.replacements" />
       </component>
       <component id="system.core10.dtlb" name="dtlb">
@@ -2606,10 +2606,10 @@
         <param name="dcache_config" value="32768,64,2,1,1,2,64,0"/>
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu10.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu10.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu10.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu10.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl10.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl10.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl10.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl10.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu10.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -2620,7 +2620,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu10.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu10.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu10.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -2736,15 +2736,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu11.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu11.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu11.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu11.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu11.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu11.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu11.rename.RenamedOperands * stats.system.cpu11.rename.int_rename_lookups / stats.system.cpu11.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu11.rename.renamedOperands * stats.system.cpu11.rename.intLookups / stats.system.cpu11.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu11.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu11.rename.RenamedOperands * stats.system.cpu11.rename.fp_rename_lookups / stats.system.cpu11.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu11.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu11.rename.renamedOperands * stats.system.cpu11.rename.fpLookups / stats.system.cpu11.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu11.intInstQueueReads" />
@@ -2824,8 +2824,8 @@
         <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu11.readReqs" />
-        <stat name="read_misses" value="stats.system.cpu11.icache.ReadReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl11.L1Icache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl11.L1Icache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu11.icache.replacements" />
       </component>
       <component id="system.core11.dtlb" name="dtlb">
@@ -2840,10 +2840,10 @@
         <param name="dcache_config" value="32768,64,2,1,1,2,64,0"/>
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu11.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu11.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu11.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu11.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl11.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl11.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl11.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl11.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu11.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -2854,7 +2854,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu11.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu11.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu11.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -2970,15 +2970,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu12.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu12.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu12.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu12.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu12.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu12.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu12.rename.RenamedOperands * stats.system.cpu12.rename.int_rename_lookups / stats.system.cpu12.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu12.rename.renamedOperands * stats.system.cpu12.rename.intLookups / stats.system.cpu12.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu12.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu12.rename.RenamedOperands * stats.system.cpu12.rename.fp_rename_lookups / stats.system.cpu12.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu12.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu12.rename.renamedOperands * stats.system.cpu12.rename.fpLookups / stats.system.cpu12.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu12.intInstQueueReads" />
@@ -3058,8 +3058,8 @@
         <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu12.readReqs" />
-        <stat name="read_misses" value="stats.system.cpu12.icache.ReadReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl12.L1Icache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl12.L1Icache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu12.icache.replacements" />
       </component>
       <component id="system.core12.dtlb" name="dtlb">
@@ -3074,10 +3074,10 @@
         <param name="dcache_config" value="32768,64,2,1,1,2,64,0"/>
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu12.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu12.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu12.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu12.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl12.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl12.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl12.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl12.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu12.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -3088,7 +3088,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu12.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu12.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu12.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -3204,15 +3204,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu13.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu13.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu13.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu13.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu13.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu13.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu13.rename.RenamedOperands * stats.system.cpu13.rename.int_rename_lookups / stats.system.cpu13.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu13.rename.renamedOperands * stats.system.cpu13.rename.intLookups / stats.system.cpu13.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu13.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu13.rename.RenamedOperands * stats.system.cpu13.rename.fp_rename_lookups / stats.system.cpu13.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu13.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu13.rename.renamedOperands * stats.system.cpu13.rename.fpLookups / stats.system.cpu13.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu13.intInstQueueReads" />
@@ -3292,8 +3292,8 @@
         <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu13.readReqs" />
-        <stat name="read_misses" value="stats.system.cpu13.icache.ReadReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl13.L1Icache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl13.L1Icache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu13.icache.replacements" />
       </component>
       <component id="system.core13.dtlb" name="dtlb">
@@ -3308,10 +3308,10 @@
         <param name="dcache_config" value="32768,64,2,1,1,2,64,0"/>
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu13.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu13.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu13.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu13.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl13.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl13.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl13.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl13.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu13.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -3322,7 +3322,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu13.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu13.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu13.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -3438,15 +3438,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu14.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu14.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu14.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu14.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu14.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu14.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu14.rename.RenamedOperands * stats.system.cpu14.rename.int_rename_lookups / stats.system.cpu14.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu14.rename.renamedOperands * stats.system.cpu14.rename.intLookups / stats.system.cpu14.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu14.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu14.rename.RenamedOperands * stats.system.cpu14.rename.fp_rename_lookups / stats.system.cpu14.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu14.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu14.rename.renamedOperands * stats.system.cpu14.rename.fpLookups / stats.system.cpu14.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu14.intInstQueueReads" />
@@ -3526,8 +3526,8 @@
         <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu14.readReqs" />
-        <stat name="read_misses" value="stats.system.cpu14.icache.ReadReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl14.L1Icache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl14.L1Icache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu14.icache.replacements" />
       </component>
       <component id="system.core14.dtlb" name="dtlb">
@@ -3542,10 +3542,10 @@
         <param name="dcache_config" value="32768,64,2,1,1,2,64,0"/>
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu14.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu14.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu14.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu14.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl14.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl14.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl14.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl14.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu14.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -3556,7 +3556,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu14.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu14.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu14.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -3672,15 +3672,15 @@
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
       otherwise, McPAT has to guess based on number of committed instructions. -->
-      <stat name="ROB_reads" value="stats.system.cpu15.rob.rob_reads" />
-      <stat name="ROB_writes" value="stats.system.cpu15.rob.rob_writes" />
+      <stat name="ROB_reads" value="stats.system.cpu15.rob.reads" />
+      <stat name="ROB_writes" value="stats.system.cpu15.rob.writes" />
       <!-- RAT accesses -->
-      <stat name="rename_reads" value="stats.system.cpu15.rename.int_rename_lookups" />
+      <stat name="rename_reads" value="stats.system.cpu15.rename.intLookups" />
       <!--lookup in renaming logic -->
-      <stat name="rename_writes" value="int(stats.system.cpu15.rename.RenamedOperands * stats.system.cpu15.rename.int_rename_lookups / stats.system.cpu15.rename.RenameLookups)" />
+      <stat name="rename_writes" value="int(stats.system.cpu15.rename.renamedOperands * stats.system.cpu15.rename.intLookups / stats.system.cpu15.rename.lookups)" />
       <!--update dest regs. renaming logic -->
-      <stat name="fp_rename_reads" value="stats.system.cpu15.rename.fp_rename_lookups" />
-      <stat name="fp_rename_writes" value="int(stats.system.cpu15.rename.RenamedOperands * stats.system.cpu15.rename.fp_rename_lookups / stats.system.cpu15.rename.RenameLookups)" />
+      <stat name="fp_rename_reads" value="stats.system.cpu15.rename.fpLookups" />
+      <stat name="fp_rename_writes" value="int(stats.system.cpu15.rename.renamedOperands * stats.system.cpu15.rename.fpLookups / stats.system.cpu15.rename.lookups)" />
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
       <stat name="inst_window_reads" value="stats.system.cpu15.intInstQueueReads" />
@@ -3760,8 +3760,8 @@
         <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu15.readReqs" />
-        <stat name="read_misses" value="stats.system.cpu15.icache.ReadReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl15.L1Icache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl15.L1Icache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu15.icache.replacements" />
       </component>
       <component id="system.core15.dtlb" name="dtlb">
@@ -3776,10 +3776,10 @@
         <param name="dcache_config" value="32768,64,2,1,1,2,64,0"/>
         <param name="buffer_sizes" value="4,4,4,4" />
         <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-        <stat name="read_accesses" value="stats.system.cpu15.dcache.ReadReq_accesses::total" />
-        <stat name="write_accesses" value="stats.system.cpu15.dcache.WriteReq_accesses::total" />
-        <stat name="read_misses" value="stats.system.cpu15.dcache.ReadReq_misses::total" />
-        <stat name="write_misses" value="stats.system.cpu15.dcache.WriteReq_misses::total" />
+        <stat name="read_accesses" value="stats.system.ruby.l1_cntrl15.L1Dcache.m_demand_accesses / 2" />
+        <stat name="write_accesses" value="stats.system.ruby.l1_cntrl15.L1Dcache.m_demand_accesses / 2" />
+        <stat name="read_misses" value="stats.system.ruby.l1_cntrl15.L1Dcache.m_demand_misses / 2" />
+        <stat name="write_misses" value="stats.system.ruby.l1_cntrl15.L1Dcache.m_demand_misses / 2" />
         <stat name="conflicts" value="stats.system.cpu15.dcache.replacements" />
       </component>
       <param name="number_of_BTB" value="2" />
@@ -3790,7 +3790,7 @@
         <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
         <stat name="read_accesses" value="stats.system.cpu15.branchPred.BTBLookups" />
         <!--See IFU code for guideline -->
-        <stat name="write_accesses" value="stats.system.cpu15.commit.branches" />
+        <stat name="write_accesses" value="stats.system.cpu15.branchPred.committed_0::total" />
       </component>
     </component>
     
@@ -3808,11 +3808,11 @@
       <param name="ports" value="1,1,1" />
       <!-- number of r, w, and rw ports -->
       <param name="device_type" value="0" />
-      <stat name="read_accesses" value="stats.system.l2.ReadExReq_accesses::total" />
-      <stat name="write_accesses" value="(stats.system.l2.overall_accesses::total + stats.system.l2.writebacks::total)" />
-      <stat name="read_misses" value="stats.system.l2.ReadExReq_misses::total" />
-      <stat name="write_misses" value="(stats.system.l2.overall_misses::total - stats.system.l2.ReadExReq_misses::total)" />
-      <stat name="conflicts" value="stats.system.l2.replacements" /> 
+      <stat name="read_accesses" value="stats.system.ruby.l2_cntrl0.L2cache.m_demand_accesses / 2" />
+      <stat name="write_accesses" value="stats.system.ruby.l2_cntrl0.L2cache.m_demand_accesses / 2" />
+      <stat name="read_misses" value="stats.system.ruby.l2_cntrl0.L2cache.m_demand_misses / 2" />
+      <stat name="write_misses" value="stats.system.ruby.l2_cntrl0.L2cache.m_demand_misses / 2" />
+      <stat name="conflicts" value="stats.system.ruby.L2Cache_Controller.L2_Replacement_clean" /> 
       <stat name="duty_cycle" value="0.5" />
     </component>
 
@@ -3902,9 +3902,24 @@
       <param name="databus_width" value="128" />
       <param name="addressbus_width" value="51" />
       <!-- McPAT will add the control bus width to the address bus width automatically -->
-      <stat name="memory_accesses" value="(stats.system.mem_ctrls.readReqs + stats.system.mem_ctrls.writeReqs)" />
-      <stat name="memory_reads" value="stats.system.mem_ctrls.readReqs" />
-      <stat name="memory_writes" value="stats.system.mem_ctrls.writeReqs" />
+      <stat name="memory_accesses" value="(stats.system.mem_ctrls0.readReqs + stats.system.mem_ctrls1.readReqs + stats.system.mem_ctrls2.readReqs + stats.system.mem_ctrls3.readReqs + stats.system.mem_ctrls4.readReqs
+                                        + stats.system.mem_ctrls5.readReqs + stats.system.mem_ctrls6.readReqs + stats.system.mem_ctrls7.readReqs + stats.system.mem_ctrls8.readReqs + stats.system.mem_ctrls9.readReqs
+                                        + stats.system.mem_ctrls10.readReqs + stats.system.mem_ctrls11.readReqs + stats.system.mem_ctrls11.readReqs + stats.system.mem_ctrls12.readReqs + stats.system.mem_ctrls13.readReqs
+                                        + stats.system.mem_ctrls14.readReqs + stats.system.mem_ctrls15.readReqs
+                                        
+                                        + stats.system.mem_ctrls0.writeReqs + stats.system.mem_ctrls1.writeReqs + stats.system.mem_ctrls2.writeReqs + stats.system.mem_ctrls3.writeReqs + stats.system.mem_ctrls4.writeReqs
+                                        + stats.system.mem_ctrls5.writeReqs + stats.system.mem_ctrls6.writeReqs + stats.system.mem_ctrls7.writeReqs + stats.system.mem_ctrls8.writeReqs + stats.system.mem_ctrls9.writeReqs
+                                        + stats.system.mem_ctrls10.writeReqs + stats.system.mem_ctrls11.writeReqs + stats.system.mem_ctrls11.writeReqs + stats.system.mem_ctrls12.writeReqs + stats.system.mem_ctrls13.writeReqs
+                                        + stats.system.mem_ctrls14.writeReqs + stats.system.mem_ctrls15.writeReqs)" />
+                                        
+      <stat name="memory_reads" value="(stats.system.mem_ctrls0.readReqs + stats.system.mem_ctrls1.readReqs + stats.system.mem_ctrls2.readReqs + stats.system.mem_ctrls3.readReqs + stats.system.mem_ctrls4.readReqs
+                                        + stats.system.mem_ctrls5.readReqs + stats.system.mem_ctrls6.readReqs + stats.system.mem_ctrls7.readReqs + stats.system.mem_ctrls8.readReqs + stats.system.mem_ctrls9.readReqs
+                                        + stats.system.mem_ctrls10.readReqs + stats.system.mem_ctrls11.readReqs + stats.system.mem_ctrls11.readReqs + stats.system.mem_ctrls12.readReqs + stats.system.mem_ctrls13.readReqs
+                                        + stats.system.mem_ctrls14.readReqs + stats.system.mem_ctrls15.readReqs)" />
+      <stat name="memory_writes" value="(stats.system.mem_ctrls0.writeReqs + stats.system.mem_ctrls1.writeReqs + stats.system.mem_ctrls2.writeReqs + stats.system.mem_ctrls3.writeReqs + stats.system.mem_ctrls4.writeReqs
+                                        + stats.system.mem_ctrls5.writeReqs + stats.system.mem_ctrls6.writeReqs + stats.system.mem_ctrls7.writeReqs + stats.system.mem_ctrls8.writeReqs + stats.system.mem_ctrls9.writeReqs
+                                        + stats.system.mem_ctrls10.writeReqs + stats.system.mem_ctrls11.writeReqs + stats.system.mem_ctrls11.writeReqs + stats.system.mem_ctrls12.writeReqs + stats.system.mem_ctrls13.writeReqs
+                                        + stats.system.mem_ctrls14.writeReqs + stats.system.mem_ctrls15.writeReqs)" />
       <!-- McPAT does not track individual mc, instead, it takes the total accesses and calculate 
       the average power per MC or per channel. This is sufficient for most application. 
       Further track down can be easily added in later versions. -->
