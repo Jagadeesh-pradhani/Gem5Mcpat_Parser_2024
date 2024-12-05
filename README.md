@@ -41,7 +41,7 @@ python3 parser.py --config m5out/config.json --stats m5out/stats.txt --template 
 
 ### McPat
 ```sh
-./mcpat -infile mcpat-in.xml
+./mcpat -infile mcpat-in.xml -print_level 5 > ../../results/mcf/oldresult.txt
 ```
 
 
